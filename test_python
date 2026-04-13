@@ -1,0 +1,22 @@
+import requests
+from bs4 import BeautifulSoup
+
+# URL to scrape
+url = "https://example.com"
+
+# Send HTTP request
+response = requests.get(url)
+
+# Check if request was successful
+if response.status_code == 200:
+    # Parse HTML content
+    soup = BeautifulSoup(response.text, "html.parser")
+    
+    # Find all <h2> tags (example: headlines)
+    headlines = soup.find_all("h2")
+    
+    # Print extracted text
+    for idx, headline in enumerate(headlines, start=1):
+        print(f"{idx}. {headline.get_text(strip=True)}")
+else:
+    print(f"Failed to retrieve page. Status code: {response.status_code}")
