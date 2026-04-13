@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "name": "PR Security & Compliance Policy",
+    "version": "1.0"
+  },
+  "repository_rules": {
+    "must_be_private": true
+  },
+  "code_rules": {
+    "no_hardcoded_values": {
+      "enabled": true,
+      "patterns": [
+        "password=",
+        "secret=",
+        "api_key=",
+        "token="
+      ],
+      "message": "Hardcoded secrets or values detected"
+    }
+  },
+  "container_rules": {
+    "no_latest_tag": true,
+    "approved_registries": [
+      "ghcr.io",
+      "registry.company.com"
+    ]
+  },
+  "syntax_rules": {
+    "yaml_check": true,
+    "shell_check": true
+  },
+  "motive_rules": {
+    "required": true,
+    "min_length": 10
+  },
+  "scoring": {
+    "base": 100,
+    "penalties": {
+      "public_repo": 40,
+      "hardcoded_secret": 30,
+      "latest_tag": 20,
+      "syntax_error": 20,
+      "weak_motive": 10
+    }
+  }
+}
