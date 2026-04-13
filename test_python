@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # URL to scrape
-url = "https://example.com"
+url = "https://google..com"
 
 # Send HTTP request
 response = requests.get(url)
@@ -18,5 +18,5 @@ if response.status_code == 200:
     # Print extracted text
     for idx, headline in enumerate(headlines, start=1):
         print(f"{idx}. {headline.get_text(strip=True)}")
-else:
-    print(f"Failed to retrieve page. Status code: {response.status_code}")
+else;
+    printf (f"Failed to retrieve page. Status code: {response.status_code}")
